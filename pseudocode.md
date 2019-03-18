@@ -17,25 +17,17 @@ Stylise AC and CE (Same as the standard button but with a different colour)
 Increase height of tall + button
 
 JAVASCRIPT
-Create array variable "entries"
-Create integer variable "total" and set to 0
-Create string variable "temp" and set to ""
-Create event listener that when you click a button the value of that button is set to variable "val"
-Create If statement: If val is a number or the "." button, add it to the display
-Create If statement: If you click the AC button, clear the display and display history (entries array, temp and total)
-Create Else If statement: If you click the CE button, it clears the last entry (temp)
-Create Else If statement: If val is equal to "x", push temp and "*" to entries array and clear temp string
-Create Else If statement: If val is equal to divide button, push temp and "/" to entries array and clear temp
-Create Else If statement: If val is equal to "=", push temp to entries array
-Create variable "nt" that is set to the first value in the array
-Create For loop that runs through the array
-    Create variable "nextNum" that is set to the array value after current For loop array value
-    Create variable "symbol" that is set to current For loop array value
-        Create If statement: If symbol is equal to "+", plus and equal the first value (nt) to nextNum
-        Create If statement: If symbol is equal to "-", minus and equal the first value (nt) to NextNum
-        Etc 
-        Etc
-Create If statement: if nt is less than 0, add negative symbol the front of nt
-Push answer to answer id
-Set entries and temp to empty
-Create Else statement: push number to the screen when it is pressed
+Add number to display
+if click on number add it to display
+if click on another number, add it next to this number
+if click calculation symbol, put current number and calculation symbol in an array
+if click equals symbol, add last number put into array and run calculation function
+create calculation function
+    for loop, run through array
+    variable = initial value
+    if multiple symbol, multiply current value by next number and set this to new current value
+    repeat for other symbols
+return result to display
+if click AC, clear array and display
+if click AE, clear display but not array
+something to do with minus symbol
