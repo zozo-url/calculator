@@ -14,9 +14,14 @@
     margin: 10px 5px 0px 5px;
 }
 
-#answer {
+#display {
     margin: 10px;
     width: 90%;
+    background-color: white;
+    text-align: right;
+    font-family: Helvetica, sans-serif;
+    font-size: 18px;
+    padding: 0px 0px 0px 0px;
 }
 
 .row {
