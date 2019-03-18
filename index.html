@@ -1,0 +1,108 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script language = "javascript">
+        var screenNumber = "";
+        var equation = [];
+        function myNumbers(val) {
+            screenNumber = screenNumber + val;
+            document.getElementById("display").innerHTML = screenNumber;
+            if (screenNumber.length > 17){
+                document.getElementById("display").innerHTML = "ERROR";
+            }
+        }
+        function myCtrl(symb) {
+            if(symb == 'AC'){
+                equation = [];
+                screenNumber = "";
+                document.getElementById("display").innerHTML =  "&nbsp;";
+            }
+            else if(symb == 'AE'){
+                if (screenNumber.length == 1){
+                    screenNumber = ""
+                document.getElementById("display").innerHTML =  "&nbsp;";
+                }
+                else {
+                var erase = screenNumber.slice(0, -1);
+                screenNumber = erase;
+                document.getElementById("display").innerHTML = screenNumber;
+                }
+            }
+        }
+        function myCalculation(symb){
+            if (symb == '/' || 'x' || '-' || '+'){
+               equation.push(screenNumber);
+               equation.push(symb);
+               screenNumber = "";
+               console.log(equation);
+           }
+        }
+        function percent(symb){
+            if(symb == '%'){
+                screenNumber *= 0.01;
+                equation.push(screenNumber);
+                equation.push("%");
+                screenNumber = "";
+            }
+       }
+        function workOut(){
+            equation.push(screenNumber);
+            screenNumber = "";
+            var total = Number(equation[0]);
+            for (var i = 1; i < equation.length; i++) {
+                var nextNum = Number(equation[i + 1]);
+                var symb = equation[i];
+                if (symb === "+") {
+                    total += nextNum;
+                } 
+                else if (symb === "-") {
+                    total -= nextNum;    
+                } 
+                else if (symb === "*") {
+                    total *= nextNum;
+                } 
+                else if (symb === "/") {
+                    total /= nextNum;
+                }
+                else if (symb === "%") {
+                    total *= nextNum;
+                }
+            i++; 
+            }
+        document.getElementById("display").innerHTML = total;
+        equation = [];
+        }
+    </script>
+      </head>
+<div class = "calculator">
+    <p id = "title">CALCULATOR</p>
+    <div id = "display"> &nbsp;</div>
+    <div class = "row">
+        <button class = "ctrl" onclick="myCtrl('AC')">AC</button>
+        <button class = "ctrl" onclick="myCtrl('AE')">AE</button>
+        <button onclick="percent('%')">%</button>
+        <button onclick="myCalculation('/')">÷</button>
+    </div>
+    <div class = "row">
+        <button onclick="myNumbers('7')">7</button>
+        <button onclick="myNumbers('8')">8</button>
+        <button onclick="myNumbers('9')">9</button>
+        <button onclick="myCalculation('x')">x</button>
+    </div>
+    <div class = "row">
+        <button onclick="myNumbers('4')">4</button>
+        <button onclick="myNumbers('5')">5</button>
+        <button onclick="myNumbers('6')">6</button>
+        <button onclick="myCalculation('-')">-</button>
+    </div>
+    <div class = "row">
+        <button onclick="myNumbers('1')">1</button>
+        <button onclick="myNumbers('2')">2</button>
+        <button onclick="myNumbers('3')">3</button>
+        <button class="tall" onclick="myCalculation('+')">+</button>
+    </div>
+    <div class = "row">
+        <button onclick="myNumbers('0')">0</button>
+        <button onclick="myNumbers('.')">.</button>
+        <button onclick="workOut('=')">=</button>
+    </div>
+</div>
